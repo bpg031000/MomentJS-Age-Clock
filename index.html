@@ -13,15 +13,18 @@
   <script type="text/javascript">
     window.birthday = prompt('What is your birthday? MM/DD/YYYY')
     // invoke displayAge once
-    displayAge()
+    var birthMoment = new moment(birthday);
+    displayAge();
     // invoke displayAge on an interval once a second
-    setInterval(displayAge, 1000)
+    setInterval(displayAge, 1000);
     function displayAge(){
+      var now = new moment(new Date);
       /* 
       Use moment() to create a new moment object from the present time
       Fix this function to display someone's exact age
       */
-      document.querySelector('.countdown').innerHTML = moment()
+      document.querySelector('.countdown').innerHTML = moment.preciseDiff(birthMoment, now);
+      //now.from(birthMoment, true).format(YY ['years'] MM ['months'] DD ['days'] h ['hours'] m ['minutes'] s ['seconds'] SS ['ms']);
     }
   </script>
 </body>
